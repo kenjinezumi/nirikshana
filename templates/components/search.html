@@ -1,0 +1,61 @@
+<!-- HTML code -->
+<div class="search-bar">
+  <form id="search-form" method="get">
+    <div class="form-group">
+      <input type="text" id="street" name="street" class="form-control input-field" placeholder="Street">
+    </div>
+    <div class="form-row">
+      <div class="col-md-6 form-group">
+        <input type="text" id="city" name="city" class="form-control input-field" placeholder="City">
+      </div>
+      <div class="col-md-6 form-group">
+        <input type="text" id="postcode" name="postcode" class="form-control input-field" placeholder="Postcode">
+      </div>
+    </div>
+    <div class="form-group">
+      <input type="text" id="country" name="country" class="form-control input-field" placeholder="Country">
+    </div>
+    <button type="submit" class="btn btn-primary btn-block">Search</button>
+  </form>
+</div>
+<script>
+document.getElementById('search-form').addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevent form submission
+
+  // Retrieve the form values
+  var street = document.getElementsByName('street')[0].value;
+  var city = document.getElementsByName('city')[0].value;
+  var postcode = document.getElementsByName('postcode')[0].value;
+  var country = document.getElementsByName('country')[0].value;
+
+  // Construct the search URL
+  var searchUrl = 'http://127.0.0.1:8000/api/search/?';
+
+  // Append the query parameters
+  if (street) searchUrl += 'street=' + encodeURIComponent(street) + '&';
+  if (city) searchUrl += 'city=' + encodeURIComponent(city) + '&';
+  if (postcode) searchUrl += 'postcode=' + encodeURIComponent(postcode) + '&';
+  if (country) searchUrl += 'country=' + encodeURIComponent(country);
+
+  // Perform the API request
+  fetch(searchUrl)
+    .then(function(response) {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error('Error: ' + response.status);
+      }
+    })
+    .then(function(data) {
+      // Handle the API response data
+      console.log(data);
+      // Update the HTML page with the retrieved data
+      // ...
+
+    })
+    .catch(function(error) {
+      // Handle any errors that occur during the API request
+      console.error(error);
+    });
+});
+</script>

@@ -1,0 +1,112 @@
+/* styles.css */
+
+/* Override Bootstrap styles */
+/* ... */
+
+/* Custom styles */
+
+.container-fluid {
+    margin-bottom: 60px; /* Add space for the footer */
+}
+
+.content {
+    margin-top: 80px;
+    text-align: center;
+    padding: 20px;
+    width: 100%
+}
+
+.body {
+    background-color: #F5F5F5;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Set the body height to 100% of viewport height */
+}
+
+.container-fluid {
+    flex-grow: 1;
+    margin-top: 80px; /* Add space for the header */
+    margin-bottom: 60px; /* Add space for the footer */
+}
+
+.header {
+    background-color: #FFFFFF; /* Set the background color to white */
+    color: #000000; /* Set the text color to black */
+    padding: 20px;
+    position: fixed; /* Anchor the header */
+    top: 0; /* Position the header at the top */
+    left: 0; /* Position the header at the left */
+    width: 100%; /* Set the header width to 100% */
+    z-index: 9999; /* Set a high z-index to ensure the header appears above other elements */
+}
+
+.logo {
+    font-size: 24px;
+    margin: 0;
+}
+
+.navigation {
+    margin: 0;
+    padding: 0;
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.menu li {
+    margin: 0 10px;
+}
+
+.menu li a {
+    color: #000000;
+    text-decoration: none;
+}
+
+.footer {
+    background-color: #FFFFFF;
+    color: #000000;
+    padding: 20px;
+    position: fixed; /* Anchor the footer */
+    bottom: 0; /* Position the footer at the bottom */
+    left: 0; /* Position the footer at the left */
+    width: 100%; /* Set the footer width to 100% */
+}
+
+.footer p {
+    margin: 0;
+    text-align: center;
+}
+
+
+.input-field {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 8px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.search-bar {
+    margin-top: 20px;
+    width:100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align:center;
+}
+
+.btn-primary {
+    background-color: #30475E;
+    border-color: #30475E;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #222831;
+    border-color: #222831;
+}

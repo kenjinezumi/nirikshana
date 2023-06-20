@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "nirikshana"
+version = "0.1.0"
+description = "Front-end for violence monitoring"
+authors = ["Kenji Tsuchiya <kenjitsuchiya1@gmail.com>"]
+license = "BSD"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pytest-black = "^0.3.12"
+black = "^23.3.0"
+131228_pytest_1 = "^1.0.0"
+flake8 = "^6.0.0"
+Django = "^4.2.2"
+validators = "^0.20.0"
+langdetect = "^1.0.9"
+geopy = "^2.3.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

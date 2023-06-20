@@ -1,0 +1,69 @@
+<!-- map.html -->
+{% extends 'base.html' %}
+{% load static %}
+{% block header %}
+{% include 'components/header.html' %}
+{% endblock %}
+{% block content %}
+<div class="content">
+    <h1>Map Page</h1>
+    <div id="map"></div>
+</div>
+
+<script src="https://openlayers.org/en/latest/build/ol.js"></script>
+<script>
+    function initMap() {
+        // Get the location details from the URL query parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const street = urlParams.get('street');
+        const city = urlParams.get('city');
+        const postcode = urlParams.get('postcode');
+        const country = urlParams.get('country');
+
+        // Combine the location details to form the address
+        const address = `${street}, ${city}, ${postcode}, ${country}`;
+
+        // Display the address as a marker on the map
+        const map = new ol.Map({
+            target: 'map',
+            layers: [
+                new ol.layer.Tile({
+                    source: new ol.source.OSM()
+                })
+            ],
+            view: new ol.View({
+                center: ol.proj.fromLonLat([0, 0]),
+                zoom: 2
+            })
+        });
+
+        const marker = new ol.Feature({
+            geometry: new ol.geom.Point(ol.proj.fromLonLat([0, 0]))
+        });
+
+        const markerLayer = new ol.layer.Vector({
+            source: new ol.source.Vector({
+                features: [marker]
+            })
+        });
+
+        map.addLayer(markerLayer);
+
+        // Geocode the address to get the coordinates
+        const geocoder = new google.maps.Geocoder();
+        geocoder.geocode({ address }, function(results, status) {
+            if (status === 'OK') {
+                const location = results[0].geometry.location;
+                const coordinates = ol.proj.fromLonLat([location.lng(), location.lat()]);
+                map.getView().setCenter(coordinates);
+                marker.setGeometry(new ol.geom.Point(coordinates));
+            } else {
+                console.log('Geocode was not successful for the following reason:', status);
+            }
+        });
+    }
+
+    window.onload = initMap;
+</script>
+
+{% endblock %}

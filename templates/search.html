@@ -1,0 +1,19 @@
+<!-- search.html -->
+{% extends 'base.html' %}
+{% load static %}
+{% block style %}
+    <link rel="stylesheet" href="{% static 'css/search.css' %}">
+
+{% endblock %}
+{% block header %}
+{% include 'components/header.html' %}
+{% endblock %}
+{% block content %}
+<div class="content">
+    <h1>Welcome to my website!</h1>
+    <p>This is the main content of the home page.</p>
+    {% include 'components/search.html' %}
+</div>
+
+
+{% endblock %}
