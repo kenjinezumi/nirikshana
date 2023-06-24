@@ -131,3 +131,23 @@ MEDIA_URL = '/static/media/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#Localisation
+
+# Specify the list of languages supported by your application
+LANGUAGE_CODE = 'en-us'
+LANGUAGES = [
+    ('en', 'English'),
+    ('fr', 'French'),
+    ('jp', 'Japanese'),
+    ('it', 'Italian'),
+    # Add more languages as needed
+]
+
+# Enable Django's internationalization framework
+USE_I18N = True
+
+# Set the path to the directory containing your translation files
+LOCALE_PATHS = [
+    f"{BASE_DIR}/static/locale/",
+]

@@ -108,3 +108,7 @@
 .sidebar:hover .sidebar-menu {
     display: block; /* Show the sidebar menu on hover */
 }
+
+#searchFormContainer.show {
+    display: block;
+}

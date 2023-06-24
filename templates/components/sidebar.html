@@ -1,9 +1,65 @@
-<!-- HTML code -->
 <div class="sidebar">
     <div class="expand-content">Expand</div>
-    <ul class="sidebar-menu">
-        <li><a href="#">Search</a></li>
+    <ul class="sidebar-menu" id="sidebarMenu">
+        <li><a href="#" onclick="showSearchForm()">Search</a></li>
         <li><a href="#">Submit an event</a></li>
         <li><a href="#">Home</a></li>
     </ul>
+    <div id="searchFormContainer" style="display: none;">
+        <div class="search-bar">
+            <form id="search-form" method="get">
+                <div class="form-group">
+                    <input type="text" id="country" name="country" class="form-control input-field" placeholder="Country">
+                </div>
+                <div class="form-group">
+                    <input type="text" id="city" name="city" class="form-control input-field" placeholder="City">
+                </div>
+                <div class="form-row">
+                    <div class="col-md-6 form-group">
+                        <input type="text" id="street" name="street" class="form-control input-field" placeholder="Street">
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <input type="text" id="postcode" name="postcode" class="form-control input-field" placeholder="Postcode">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Search</button>
+                <div>
+                    <button class="collapse-sidebar-button" onclick="collapseSidebar()">Collapse Sidebar</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
+
+<script>
+    function showSearchForm() {
+        var sidebarMenu = document.getElementById('sidebarMenu');
+        var searchFormContainer = document.getElementById('searchFormContainer');
+        var expandContent = document.querySelector('.expand-content');
+
+        sidebarMenu.style.display = 'none';
+        searchFormContainer.style.display = 'block';
+        expandContent.style.display = 'none';
+        expandSidebar();
+    }
+
+    function expandSidebar() {
+        var sidebar = document.querySelector('.sidebar');
+        sidebar.style.width = '300px';
+        sidebar.classList.add('expand');
+    }
+
+    function collapseSidebar() {
+    var sidebar = document.querySelector('.sidebar');
+    var sidebarMenu = document.getElementById('sidebarMenu');
+    var searchFormContainer = document.getElementById('searchFormContainer');
+    var expandContent = document.querySelector('.expand-content');
+
+    sidebar.style.width = '40px';
+    sidebar.classList.remove('expand');
+    sidebarMenu.style.display = 'none';
+    searchFormContainer.style.display = 'none'; // Hide the search form
+    expandContent.style.display = 'block';
+}
+
+</script>
