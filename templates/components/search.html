@@ -1,9 +1,15 @@
 <!-- HTML code -->
+<div class="sidebar">
+    <div class="expand-content">Expand</div>
+    <ul class="sidebar-menu">
+        <li><a href="#">Search</a></li>
+        <li><a href="#">Submit an event</a></li>
+        <li><a href="#">Home</a></li>
+    </ul>
+</div>
+
 <div class="search-bar">
   <form id="search-form" method="get">
-    <div class="form-group">
-      <input type="text" id="street" name="street" class="form-control input-field" placeholder="Street">
-    </div>
     <div class="form-row">
       <div class="col-md-6 form-group">
         <input type="text" id="city" name="city" class="form-control input-field" placeholder="City">
@@ -18,44 +24,57 @@
     <button type="submit" class="btn btn-primary btn-block">Search</button>
   </form>
 </div>
+
 <script>
-document.getElementById('search-form').addEventListener('submit', function(event) {
-  event.preventDefault(); // Prevent form submission
+  // JavaScript code
+  document.getElementById('search-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent form submission
 
-  // Retrieve the form values
-  var street = document.getElementsByName('street')[0].value;
-  var city = document.getElementsByName('city')[0].value;
-  var postcode = document.getElementsByName('postcode')[0].value;
-  var country = document.getElementsByName('country')[0].value;
+    // Retrieve the form values
+    var street = document.getElementsByName('street')[0].value;
+    var city = document.getElementsByName('city')[0].value;
+    var postcode = document.getElementsByName('postcode')[0].value;
+    var country = document.getElementsByName('country')[0].value;
 
-  // Construct the search URL
-  var searchUrl = 'http://127.0.0.1:8000/api/search/?';
+    // Construct the search URL
+    var searchUrl = 'http://127.0.0.1:8000/search/?';
 
-  // Append the query parameters
-  if (street) searchUrl += 'street=' + encodeURIComponent(street) + '&';
-  if (city) searchUrl += 'city=' + encodeURIComponent(city) + '&';
-  if (postcode) searchUrl += 'postcode=' + encodeURIComponent(postcode) + '&';
-  if (country) searchUrl += 'country=' + encodeURIComponent(country);
+    // Append the query parameters
+    if (street) searchUrl += 'street=' + encodeURIComponent(street) + '&';
+    if (city) searchUrl += 'city=' + encodeURIComponent(city) + '&';
+    if (postcode) searchUrl += 'postcode=' + encodeURIComponent(postcode) + '&';
+    if (country) searchUrl += 'country=' + encodeURIComponent(country);
 
-  // Perform the API request
-  fetch(searchUrl)
-    .then(function(response) {
-      if (response.ok) {
-        return response.json();
+    // Create a new XMLHttpRequest
+    var xhr = new XMLHttpRequest();
+
+    // Set up the request
+    xhr.open('GET', searchUrl, true);
+
+    // Set the appropriate request headers if needed
+    // xhr.setRequestHeader('Content-Type', 'application/json');
+
+    // Set up the event handler for when the request is complete
+    xhr.onload = function() {
+      if (xhr.status >= 200 && xhr.status < 400) {
+        // Request succeeded, handle the response if needed
+        var response = JSON.parse(xhr.responseText);
+        console.log('Request succeeded:', response);
+
+        // Redirect to the next view
+        window.location.href = '/results/';
       } else {
-        throw new Error('Error: ' + response.status);
+        // Request failed, handle the error if needed
+        console.log('Request failed:', xhr.status, xhr.statusText);
       }
-    })
-    .then(function(data) {
-      // Handle the API response data
-      console.log(data);
-      // Update the HTML page with the retrieved data
-      // ...
+    };
 
-    })
-    .catch(function(error) {
-      // Handle any errors that occur during the API request
-      console.error(error);
-    });
-});
+    // Set up the event handler for any network errors
+    xhr.onerror = function() {
+      console.log('An error occurred during the API request.');
+    };
+
+    // Send the request
+    xhr.send();
+  });
 </script>

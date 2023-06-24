@@ -1,0 +1,13 @@
+<!-- search_results.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'css/search_results.css' %}">
+{% endblock %}
+
+{% block content %}
+
+{% include 'components/sidebar.html' %}
+{% include 'components/map.html' %}
+{% endblock %}
