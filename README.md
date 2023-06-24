@@ -5,7 +5,7 @@ The Nirikshna application is a Django web-app application to monitor police viol
 
 ## Usage
 
-1. Clone the repository or download the source code files from git@github.com:kenjinezumi/churn-analyser.git
+1. Clone the repository or download the source code files from [git@github.com:kenjinezumi/churn-analyser.git](https://github.com/kenjinezumi/nirikshana.git)
 
 2. Open a terminal or command prompt and navigate to the directory where the Django files are located.
 
