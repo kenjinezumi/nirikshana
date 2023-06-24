@@ -1,32 +1,31 @@
 <!-- HTML code -->
-<div class="sidebar">
-    <div class="expand-content">Expand</div>
-    <ul class="sidebar-menu">
-        <li><a href="#">Search</a></li>
-        <li><a href="#">Submit an event</a></li>
-        <li><a href="#">Home</a></li>
-    </ul>
-</div>
-
 <div class="search-bar">
   <form id="search-form" method="get">
+    <div class="form-group">
+      <input type="text" id="country" name="country" class="form-control input-field" placeholder="Country">
+    </div>
+    <div class="form-group">
+              <input type="text" id="city" name="city" class="form-control input-field" placeholder="City">
+
+    </div>
+
     <div class="form-row">
       <div class="col-md-6 form-group">
-        <input type="text" id="city" name="city" class="form-control input-field" placeholder="City">
+              <input type="text" id="street" name="street" class="form-control input-field" placeholder="Street">
+
       </div>
+
       <div class="col-md-6 form-group">
         <input type="text" id="postcode" name="postcode" class="form-control input-field" placeholder="Postcode">
       </div>
     </div>
-    <div class="form-group">
-      <input type="text" id="country" name="country" class="form-control input-field" placeholder="Country">
-    </div>
+
     <button type="submit" class="btn btn-primary btn-block">Search</button>
   </form>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
 <script>
-  // JavaScript code
   document.getElementById('search-form').addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent form submission
 
@@ -44,8 +43,7 @@
     if (city) searchUrl += 'city=' + encodeURIComponent(city) + '&';
     if (postcode) searchUrl += 'postcode=' + encodeURIComponent(postcode) + '&';
     if (country) searchUrl += 'country=' + encodeURIComponent(country);
-
-    // Create a new XMLHttpRequest
+  // Create a new XMLHttpRequest
     var xhr = new XMLHttpRequest();
 
     // Set up the request
