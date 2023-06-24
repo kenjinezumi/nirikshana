@@ -16,6 +16,7 @@ Django = "^4.2.2"
 validators = "^0.20.0"
 langdetect = "^1.0.9"
 geopy = "^2.3.0"
+spatialite = "^0.0.3"
 
 
 [build-system]

@@ -1,0 +1,110 @@
+/* styles.css */
+
+.sidebar {
+    background-color: #222831;
+    color: #FFFFFF;
+    padding: 20px;
+    width: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: width 0.5s;
+    overflow: hidden;
+    position: fixed;
+    top: 50%;
+    height: calc(100vh - 200px);
+    transform: translateY(-50%);
+    left: 0;
+    z-index: 999;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 40px;
+}
+
+.sidebar.expand {
+    width: 150px; /* Adjust the expanded width as needed */
+}
+
+.expand-content {
+    font-size: 25px;
+    opacity: 1;
+    transition: opacity 0.8s;
+    writing-mode: vertical-rl; /* Set the writing mode to vertical right-to-left */
+    text-orientation: mixed; /* Enable vertical text orientation */
+}
+
+.sidebar:hover .expand-content {
+    opacity: 0;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: none; /* Hide the sidebar menu by default */
+}
+
+.sidebar.expand .sidebar-menu {
+    display: block; /* Show the sidebar menu when the sidebar is expanded */
+}
+
+.sidebar-menu li {
+    margin-bottom: 10px;
+}
+
+.sidebar-menu li a {
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 8px;
+    display: block;
+    transition: background-color 0.3s;
+}
+
+.sidebar-menu li a:hover {
+    background-color: #30475E;
+    border-radius: 10px;
+}
+
+/* Additional styles */
+
+.search-bar {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.input-field {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 8px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.btn-primary {
+    background-color: #30475E;
+    border-color: #30475E;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #222831;
+    border-color: #222831;
+}
+
+#map {
+    height: calc(100vh - 40px); /* Adjust the height as needed */
+    margin-top: 40px; /* Adjust the top margin as needed */
+}
+
+.sidebar:hover {
+    width: 150px; /* Adjust the expanded width as needed */
+}
+
+.sidebar:hover .sidebar-menu {
+    display: block; /* Show the sidebar menu on hover */
+}
